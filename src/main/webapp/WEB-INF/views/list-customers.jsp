@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>javaguides.net</title>
+    <title>Phonebook: list</title>
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
     <%@ page isELIgnored="false" %>
     <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>

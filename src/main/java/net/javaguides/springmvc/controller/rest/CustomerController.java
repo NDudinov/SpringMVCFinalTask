@@ -33,6 +33,7 @@ public class CustomerController {
     @PostMapping("/customers")
     @ResponseBody
     public Customer newCustomer(@RequestBody Customer theCustomer) {
+
         return customerService.saveCustomer(theCustomer);
     }
 
@@ -42,5 +43,24 @@ public class CustomerController {
     public Customer findOne(@PathVariable Integer id) throws ResourceNotFoundException {
         return customerService.getCustomer(id);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/customers/{id}")
+    public Customer updateOne(@PathVariable("id") Integer id,
+                              @RequestBody Customer customer) throws ResourceNotFoundException {
+        Customer theCustomer = customerService.getCustomer(id);
+        theCustomer.setFirstName(customer.getFirstName());
+        theCustomer.setLastName(customer.getLastName());
+        theCustomer.setEmail(customer.getEmail());
+        return customerService.saveCustomer(theCustomer);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/customers/{id}")
+    public void deleteOne(@PathVariable("id") Integer id) throws ResourceNotFoundException {
+        customerService.deleteCustomer(id);
+    }
+
+
 
 }
